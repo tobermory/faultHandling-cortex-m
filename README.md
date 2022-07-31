@@ -70,7 +70,7 @@ $ git clone https://github.com/ARM-software/CMSIS_5.git
 Next, clone this repo (the one whose README you are now reading), if
 not done so already.
 
-Next, edit [Makefile](./Makefile), setting the CMSIS_HOME variable to point to
+Next, edit the Makefile, setting the CMSIS_HOME variable to point to
 your ARM CMSIS repo clone, e.g. `someDir/CMSIS_5`:
 
 ```
@@ -124,6 +124,13 @@ int main(void) {
 
   rest of application, will fault somewhere...
 }
+
+// Override the (weak) HFH to vector to our library
+__attribute__((naked))
+void HardFault_Handler(void) {
+  __asm__( "B FaultHandler\n" );
+}
+
 ```
 
 In additional to the core CPU register values, the fault dump can
