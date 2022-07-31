@@ -58,8 +58,8 @@ Adapt to your build system as needed.
 
 ## Building the Library
 
-First, clone the ARM CMSIS_5 repository on GitHub.  It includes header
-files we need:
+First, and only if needed, clone the ARM CMSIS_5 repository on GitHub.
+It includes core Cortex-M header files we need:
 
 ```
 $ cd someDir
@@ -68,10 +68,15 @@ $ git clone https://github.com/ARM-software/CMSIS_5.git
 ```
 
 Next, clone this repo (the one whose README you are now reading), if
-not done so already.
+not done so already:
+
+```
+$ cd someOtherDir
+$ git clone https://github.com/tobermory/faultHandling-cortex-m
+```
 
 Next, edit the Makefile, setting the CMSIS_HOME variable to point to
-your ARM CMSIS repo clone, e.g. `someDir/CMSIS_5`:
+your ARM CMSIS repo clone, e.g:
 
 ```
 CMSIS_HOME = /path/to/my/someDir/CMSIS_5
