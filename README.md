@@ -88,7 +88,24 @@ With all the prep work, it should now be a case of just:
 $ make
 ```
 
-to produce faultHandling_CM3.a.
+to go from this:
+
+```
+src/main
+├── asm
+│   └── faultHandling_cm3.S
+├── c
+│   ├── faultHandling.c
+└── include
+    ├── faultHandling.h
+```
+
+to this:
+
+```
+faultHandling_CM3.a
+```
+
 
 By default, the build output is terse (uncluttered!).  To see a bit
 more:
