@@ -174,10 +174,7 @@ memory layout from the user:
 extern uint32_t __etext;
 extern uint32_t __StackTop;
    
-faultHandlingSetCallStackParameters( (uint32_t*)4,
-									   &__etext,
-									   &__StackTop,
-									   0 );
+faultHandlingSetCallStackParameters( (uint32_t*)4, &__etext, &__StackTop, 0 );
 ```
 
 You just supply lower and upper bounds for the .text section, and
