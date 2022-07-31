@@ -67,8 +67,16 @@ $ git clone https://github.com/ARM-software/CMSIS_5.git
 
 ```
 
-Next, clone this repo (the one whose README you are now reading), if
-not done so already:
+We have verified that tagged releases 5.8.0 and 5.9.0 are good to go
+for our purposes. Other releases are untested:
+
+```
+$ git checkout 5.8.0
+$ git checkout 5.9.0
+```
+
+Next, clone the fault-handler repo (the one whose README you are now
+reading), if not done so already:
 
 ```
 $ cd someOtherDir
