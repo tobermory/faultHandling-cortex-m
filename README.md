@@ -85,11 +85,21 @@ $ make
 
 to produce faultHandling_CM3.a.
 
+By default, the build output is terse (uncluttered!).  To see a bit
+more:
+
+```
+$ make clean
+$ make V=1
+```
+
+There are a few simple demo applications:
+
 ```
 $ make tests
 ```
 
-produces noopProcessor.axf, .bin, .map, .lst.
+Each demo/test produces four files: .axf, .bin, .map, .lst.
 
 ## Other CPUs
 
