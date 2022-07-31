@@ -1,20 +1,41 @@
-#
+# CPU Fault Handling on ARM Cortex M Processors
 
 For programs running on ARM Cortex-M series microcontrollers, given a
-fault like this
+CPU fault resulting from code such as this
 
 ```
 void (*p)(void) = (void(*)(void))0;
+...
 p();
 ```
-this library produces a 'fault dump' like this:
+this 'fault handling' library produces a 'fault dump' like this:
 
-DUMP
+```
+r7    2001BEC8
+sp    2001BEA0
+excrt FFFFFFFD
+psr   20000004
+hfsr  00000000
+cfsr  00000082
+mmfar 00000000
+bfar  00000000
+shcsr 00010001
+s.r0  00000000
+s.r1  0004BCF8
+s.r2  00000000
+s.r3  0004BCF8
+s.r12 01010101
+s.lr  0001D053
+s.pc  0003B9CC
+s.psr 21000000
+```
 
-which is then 'exported' from the microcontroller for fault dump
-analysis.  Fault dump creation is done here, the export is added by
-the application developer. The simplest 'export' might be printf
-(whatever that means on a microcontroller):
+The dump can then 'exported' from the microcontroller for fault dump
+analysis.  Fault dump creation is done here. The export step is
+environment-specific, so is added by the application developer.
+
+The simplest 'export' might be printf (whatever that means on a
+microcontroller!):
 
 ```
 void printfDumpProcessor(void) {
@@ -22,18 +43,55 @@ void printfDumpProcessor(void) {
 }
 ```
 
-# Building the Library
+See the sources for more details.  It's just one .h and one .c.
+
+## Prerequisites 
+
+My preferred build system uses gcc tools, woven together with a
+Makefile. I normally work on Linux, so my setup would be
+
+```
+$ sudo apt install gcc-arm-none-eabi
+$ sudo apt install make
+```
+Adapt to your build system as needed. 
+
+## Building the Library
+
+First, clone the ARM CMSIS_5 repository on GitHub.  It includes header
+files we need:
+
+```
+$ cd someDir
+$ git clone https://github.com/ARM-software/CMSIS_5.git
+
+```
+
+Next, clone this repo (the one whose README you are now reading), if
+not done so already.
+
+Next, edit ./Makefile, setting the CMSIS_HOME variable to point to
+your ARM CMSIS repo clone, e.g. `someDir/CMSIS_5`:
+
+```
+CMSIS_HOME = /path/to/my/someDir/CMSIS_5
+```
+
+With all the prep work, it should now be a case of just:
 
 ```
 $ make
 ```
 
-produces faultHandling_CM3.a
+to produce faultHandling_CM3.a.
 
 ```
 $ make tests
 ```
-produces noopProcessor.axf, .bin, .map, .lst
+
+produces noopProcessor.axf, .bin, .map, .lst.
+
+## Other CPUs
 
 Default build is for Cortex M3, my usual target. To build for other CPUs:
 
@@ -47,9 +105,50 @@ $ make CM0=1
 $ make CM0=1 tests
 ```
 
-## For real micro=controllers
+## The API
 
-## The SiliconLabs STK3700, a starter kit for EFM32 Giant Geckos
+A minimal working example of this api would be an application like:
+
+```
+#include "faultHandling.h"
+
+static char faultDumpBuffer[FAULT_HANDLING_DUMP_SIZE];
+
+static void noopDumpProcessor(void) {
+  // Wot, no periperhals to send the faultDump to, not even a serial port!
+}
+
+int main(void) {
+  faultHandlingSetDumpProcessor( faultDumpBuffer, noopDumpProcessor );
+  faultHandlingSetPostFaultAction( POSTHANDLER_LOOP );
+
+  rest of application, will fault somewhere...
+}
+```
+
+In additional to the core CPU register values, the fault dump can
+include an inferred function call stack, i.e. which function call
+sequence led to the fault.  To do this, the library needs some help on
+memory layout from the user:
+
+```
+extern uint32_t __etext;
+extern uint32_t __StackTop;
+   
+faultHandlingSetCallStackParameters( (uint32_t*)4,
+									   &__etext,
+									   &__StackTop,
+									   0 );
+```
+
+You just supply lower and upper bounds for the .text section, and
+upper bounds for Main Stack and Process Stack (latter optional).
+
+## For Real Micro-controllers
+
+WIP
+
+### The SiliconLabs STK3700, a starter kit for EFM32 Giant Geckos
 
 $ cd SiliconLabs/stk3700
 
@@ -76,9 +175,27 @@ should harvest the fault dump.
 
 ## Fault Guru
 
-OK, given a dump
+OK, given a dump:
 
-DUMP
+```
+r7    2001BEC8
+sp    2001BEA0
+excrt FFFFFFFD
+psr   20000004
+hfsr  00000000
+cfsr  00000082
+mmfar 00000000
+bfar  00000000
+shcsr 00010001
+s.r0  00000000
+s.r1  0004BCF8
+s.r2  00000000
+s.r3  0004BCF8
+s.r12 01010101
+s.lr  0001D053
+s.pc  0003B9CC
+s.psr 21000000
+```
 
 how do we infer what actually went wrong? What clues does the dump reveal?
 
