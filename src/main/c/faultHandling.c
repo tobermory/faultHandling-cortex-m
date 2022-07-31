@@ -327,7 +327,7 @@ void FaultHandler_C( uint32_t r7, uint32_t* stack, uint32_t excRet ) {
 	Stack). IDEA: can test LR to see if Process Stack is the one we are
 	searching, same way that asm code did to LOCATE that stack.
   */
-  if( startText > 0 ) {
+  if( endText > 0 ) {
 	int found = 0;
 	
 	/*
