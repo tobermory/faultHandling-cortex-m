@@ -58,7 +58,7 @@ Adapt to your build system as needed.
 
 ## Building the Library
 
-First, and only if needed, clone the ARM CMSIS_5 repository on GitHub.
+First, and only if needed, clone the ARM CMSIS_5 repository.
 It includes core Cortex-M header files we need:
 
 ```
