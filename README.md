@@ -186,10 +186,9 @@ faultHandlingSetCallStackParameters( 0, &__etext, &__StackTop, 0 );
 ```
 
 You just supply lower and upper bounds for the .text section, and
-upper bounds for Main Stack and Process Stack (latter optional).
-
-Exact accuracy for the values is not critical, it will just reduce
-false positive identification of pushed LR values (and thus call stack
+upper bounds for Main Stack and Process Stack (latter optional). Exact
+accuracy for the values is not critical, it will just reduce false
+positive identification of pushed LR values (and thus call stack
 composition).  See the code for more details.
 
 ## For Real Micro-controllers
