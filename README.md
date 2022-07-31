@@ -43,7 +43,7 @@ void printfDumpProcessor(void) {
 }
 ```
 
-See the sources for more details.  It's just one .h and one .c.
+See the [sources](src/main/) for more details.  It's just one .h and one .c.
 
 ## Prerequisites 
 
@@ -70,7 +70,7 @@ $ git clone https://github.com/ARM-software/CMSIS_5.git
 Next, clone this repo (the one whose README you are now reading), if
 not done so already.
 
-Next, edit ./Makefile, setting the CMSIS_HOME variable to point to
+Next, edit [Makefile](./Makefile), setting the CMSIS_HOME variable to point to
 your ARM CMSIS repo clone, e.g. `someDir/CMSIS_5`:
 
 ```
