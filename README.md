@@ -30,7 +30,7 @@ s.pc  0003B9CC
 s.psr 21000000
 ```
 
-The dump can then 'exported' from the microcontroller for fault dump
+The dump can then be 'exported' from the microcontroller for fault dump
 analysis.  Fault dump creation is done here. The export step is
 environment-specific, so is added by the application developer.
 
