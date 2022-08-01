@@ -51,8 +51,7 @@ My preferred build system uses gcc tools, woven together with a
 Makefile. I normally work on Linux, so my setup would be
 
 ```
-$ sudo apt install gcc-arm-none-eabi
-$ sudo apt install make
+$ sudo apt install gcc-arm-none-eabi make
 ```
 Adapt to your build system as needed. 
 
@@ -68,12 +67,15 @@ $ git clone https://github.com/ARM-software/CMSIS_5.git
 ```
 
 We have verified that tagged releases 5.8.0 and 5.9.0 are good to go
-for our purposes. Other releases are untested:
+for our purposes. Other releases are untested. So, you could checkout
+a particular commit, via e.g.
 
 ```
 $ git checkout 5.8.0
 $ git checkout 5.9.0
 ```
+
+or just skip this step and go with the HEAD of master/main.
 
 Next, clone the fault-handler repo (the one whose README you are now
 reading), if not done so already:
@@ -111,7 +113,7 @@ src/main
 to this:
 
 ```
-faultHandling_CM3.a
+libfaultHandling_CM3.a
 ```
 
 
@@ -121,6 +123,13 @@ more:
 ```
 $ make clean
 $ make V=1
+```
+
+We include a make target that just prints important variables
+(VPATH, CPPFLAGS, etc):
+
+```
+$ make flags
 ```
 
 There are a few simple demo applications:

@@ -1,4 +1,4 @@
-LIB = faultHandling_CM4.a
+LIB = libfaultHandling_CM4.a
 
 # For purpose of CPU fault handling, CM4 equivalent to CM3 ??
 LIB_ASM_SRCS = faultHandling_cm3.S

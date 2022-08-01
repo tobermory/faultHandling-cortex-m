@@ -1,4 +1,4 @@
-LIB = faultHandling_CM3.a
+LIB = libfaultHandling_CM3.a
 
 LIB_ASM_SRCS = faultHandling_cm3.S
 
