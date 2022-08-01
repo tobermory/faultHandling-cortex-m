@@ -43,7 +43,20 @@ void printfDumpProcessor(void) {
 }
 ```
 
-See the [sources](src/main/) for more details.  It's just one .h and one .c.
+I work in oceanographic instrumentation, including underwater
+profiling floats. If my system faults, 2000m down somewhere in the
+Pacific Ocean, there ain't anyone there watching, so console printf is
+pointless. And the wi-fi is spotty. Oh, and I have no hard disk.
+
+My 'export' strategy therefore is to declare the faultDump buffer in a
+.noInit section of RAM, re-boot after the fault, wait until I am back
+at the surface, then beam the fault dump home via Iridium sat comms.
+Only then can the fault analysis begin, and in my (painful)
+experience, each and every register in the dump can contribute to
+solving the error cause.
+
+See the [sources](src/main/) for more details.  It's just one .h and
+one .c, oh and a small .asm.
 
 ## Prerequisites 
 
