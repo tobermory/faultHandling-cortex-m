@@ -60,7 +60,8 @@ Analysis is essentially a case of matching register values from the
 fault dump against your .map and .lst files for the .bin file
 installed on the faulting system. You do *have* the .map and .lst
 files? If no, stop reading now, go fix your build process, then
-proceed.
+proceed. The Makefile included here shows I derive the .map and .lst
+files for any application, adapt as necessary.
 
 ## Prerequisites 
 
