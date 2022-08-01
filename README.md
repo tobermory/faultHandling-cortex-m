@@ -46,7 +46,7 @@ void printfDumpProcessor(void) {
 I work in oceanographic instrumentation, including underwater
 profiling floats. If my system faults, 2000m down somewhere in the
 Pacific Ocean, there ain't anyone there watching, so console printf is
-pointless. And the wi-fi is spotty. Oh, and I have no hard disk.
+of limited utility. And the wi-fi is spotty. Oh, and I have no hard disk.
 
 My 'export' strategy therefore is to declare the faultDump buffer in a
 .noInit section of RAM, re-boot after the fault, wait until I am back
