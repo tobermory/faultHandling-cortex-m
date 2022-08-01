@@ -211,8 +211,11 @@ faultHandlingSetCallStackParameters( 0, &__etext, &__StackTop, 0 );
 ```
 
 You just supply lower and upper bounds for the .text section, and
-upper bounds for Main Stack and Process Stack (latter optional). Exact
-accuracy for the values is not critical, it will just reduce false
+upper bounds for Main Stack and Process Stack (latter optional). I get
+`__etext` and `__StackTop` declared by my linker, via the .ld
+file. Your build will have similar.
+
+Exact accuracy for the values is not critical, it will just reduce false
 positive identification of pushed LR values (and thus call stack
 composition).  See the code for more details.
 
