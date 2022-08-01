@@ -82,7 +82,7 @@ reading), if not done so already:
 
 ```
 $ cd someOtherDir
-$ git clone https://github.com/tobermory/faultHandling-cortex-m
+$ git clone https://github.com/tobermory/faultHandling-cortex-m.git
 ```
 
 Next, edit the Makefile, setting the CMSIS_HOME variable to point to
