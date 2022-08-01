@@ -55,8 +55,11 @@ Only then can the fault analysis begin, and in my (painful)
 experience, each and every register in the dump can contribute to
 solving the error cause.
 
-See the [sources](src/main/) for more details.  It's just one .h and
-one .c, oh and a small .asm.
+Analysis is essentially a case of matching register values from the
+fault dump against your .map and .lst files for the .bin file
+installed on the faulting system. You do *have* the .map and .lst
+files? If no, stop reading now, go fix your build process, then
+proceed.
 
 ## Prerequisites 
 
@@ -177,7 +180,7 @@ A minimal working example of this api would be an application like:
 static char faultDumpBuffer[FAULT_HANDLING_DUMP_SIZE];
 
 static void noopDumpProcessor(void) {
-  // Wot, no periperhals to send the faultDump to, not even a serial port!
+  // Wot, no peripherals to send the faultDump to, not even a serial port!
 }
 
 int main(void) {
