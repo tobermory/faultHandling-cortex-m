@@ -55,7 +55,7 @@ Pacific Ocean, there ain't anyone there watching, so console printf is
 of limited utility. And the JTAG cable doesn't quite reach. And the
 wi-fi is spotty. And I have no hard disk.
 
-My 'export' strategy therefore is to declare the faultDump buffer in a
+My export strategy therefore is to declare the faultDump buffer in a
 .noInit section of RAM, re-boot after the fault, wait until I am back
 at the surface, then beam the fault dump home via Iridium sat comms.
 Only then can the fault analysis begin, and in my (painful)
