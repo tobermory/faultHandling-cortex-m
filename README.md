@@ -30,11 +30,17 @@ s.pc  0003B9CC
 s.psr 21000000
 ```
 
-The dump can then be 'exported' from the microcontroller for fault dump
-analysis.  Fault dump creation is done here. The export step is
-environment-specific, so is added by the application developer.
+The fault dump is just a multi-line string. It is prepared at program
+start, and the register value *holes* filled in at fault time to
+complete the string. This minimizes string processing after fault
+occurrence.
 
-The simplest 'export' might be printf (whatever that means on a
+The dump can then be *exported* from the microcontroller for fault
+dump analysis.  The code here creates the fault dump. The export step
+is environment-specific, so is added by the application developer, via
+a callback api
+
+The simplest export might be *printf* (whatever that means on a
 microcontroller!):
 
 ```
