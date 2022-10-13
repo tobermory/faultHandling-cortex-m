@@ -7,7 +7,4 @@ LIB_ASM_SRCS = faultHandling_cm3.S
 # likes to control (warnings,debug,etc).
 CPU_OPTIONS += -mcpu=cortex-m4
 
-# Our local CPPFLAGS, used by faultHandling.c
-CPPFLAGS += -D__CORTEX_M4
-
 # eof

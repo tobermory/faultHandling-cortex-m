@@ -38,6 +38,17 @@
 #include <stdint.h>
 
 /**
+   Define CMSIS_device_header in your build tool/IDE. For example,
+   in a Makefile, you'd do e.g.
+
+   CPPFLAGS += -DCMSIS_device_header = \"myDevice.h\"
+   
+   We did not invent this approach.  ARM use it for their RTOS2/RTX
+   builds.
+*/
+#include CMSIS_device_header
+
+/**
  * @author Stuart Maclean
  *
  * Structured fault handling on the Cortex-M processor.  See
@@ -65,7 +76,7 @@ typedef struct {
   uint32_t r7;	// aka frame-pointer fp
   uint32_t sp;
   uint32_t excrt;
-#if !defined __CORTEX_M0 && !defined __CORTEX_M0PLUS
+#if (__CORTEX_M > 0)
   uint32_t hfsr;
   uint32_t cfsr;
   uint32_t mmfar;
@@ -93,7 +104,7 @@ typedef enum { R7=0,
 			   SP,
 			   EXCRT,
 			   PSR,
-#if !defined __CORTEX_M0 && !defined __CORTEX_M0PLUS
+#if (__CORTEX_M > 0)
 			   HFSR,
 			   CFSR,
 			   MMFAR,
@@ -211,6 +222,7 @@ void HardFault_Handler(void) {
 It MUST be a simple branch (B), i.e. a jump, and NOT a branch+link
 (BL), i.e. NOT a call.
 */
+
 void FaultHandler(void);
 
 #endif

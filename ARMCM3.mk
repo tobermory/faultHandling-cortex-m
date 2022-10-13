@@ -1,15 +1,15 @@
-CMSIS_DEVICE = $(CMSIS_HOME)/Device/ARM/ARMCM3
+CMSIS_device_header = ARMCM3.h
 
-CPPFLAGS += -I$(CMSIS_DEVICE)/Include -DARMCM3
+DEVICE = $(CMSIS_HOME)/Device/ARM/ARMCM3
 
-ifndef VENDOR
+CPPFLAGS += -I$(DEVICE)/Include -DARMCM3
 
-VPATH += $(CMSIS_DEVICE)/Source $(CMSIS_DEVICE)/Source/GCC
+VPATH += $(DEVICE)/Source $(DEVICE)/Source/GCC
 
 DEVICE_SRCS = system_ARMCM3.c startup_ARMCM3.c
 
-LDSCRIPT = $(CMSIS_DEVICE)/Source/GCC/gcc_arm.ld
+LDSCRIPT = $(DEVICE)/Source/GCC/gcc_arm.ld
 
-endif
+CPPFLAGS += -I$(CMSIS_HOME)/CMSIS/Core/Include
 
 # eof

@@ -1,3 +1,11 @@
 *.a
 *.o
 *.i
+
+*.axf
+*.bin
+*.map
+*.lst
+*.jlink
+*.jdebug
+*.jdebug.user

@@ -48,27 +48,32 @@ include $(BASEDIR)/toolchain.mk
 
 CMSIS_HOME = $(BASEDIR)/../CMSIS_5
 
-# CMSIS_DEVICE delegated to cm3.mk, cm4.mk, see below
-
 ################################### CPU #################################
 
 # We're building here for M3 by default, you could switch in e.g. M0, M4
-# (make CM4=1 or edit below)
+# (make CM4=1 or edit below).
 
 ifdef CM0
-
 include $(BASEDIR)/cm0plus.mk
-include $(BASEDIR)/ARMCM0plus.mk
-
 else ifdef CM4
-
 include $(BASEDIR)/cm4.mk
-include $(BASEDIR)/ARMCM4.mk
-
 else
-
 include $(BASEDIR)/cm3.mk
+endif
+
+# A VENDOR-specific build (see e.g. ./SiliconLabs/*) will define its
+# own DEVICE files. If no VENDOR, use ARM defaults, which describe a
+# generic CPU only (no peripherals).
+
+ifndef CMSIS_device_header
+
+ifdef CM0
+include $(BASEDIR)/ARMCM0plus.mk
+else ifdef CM4
+include $(BASEDIR)/ARMCM4.mk
+else
 include $(BASEDIR)/ARMCM3.mk
+endif
 
 endif
 
@@ -87,7 +92,7 @@ DEVICE_OBJS = $(DEVICE_SRCS:.c=.o)
 # e.g. SiliconLabs/stk3700/Makefile.
 
 ifndef VENDOR
-TESTS = noopProcessor
+TESTS += noopProcessor
 endif
 
 ############################ Derived File Names #############################
@@ -111,8 +116,8 @@ VPATH += $(BASEDIR)/src/test/c
 # Locates our lib headers
 CPPFLAGS += -I$(BASEDIR)/src/main/include
 
-# Locates CMSIS headers, used by our lib
-CPPFLAGS += -I$(CMSIS_HOME)/CMSIS/Core/Include
+# Needed by faultHandling.h
+CPPFLAGS += -DCMSIS_device_header=\"$(CMSIS_device_header)\"
 
 LDLIBS += -lc -lnosys
 
@@ -177,6 +182,15 @@ flags:
 	@echo
 	@echo LIB_OBJS $(LIB_OBJS)
 
-.PHONY: default lib clean distclean flags tests
+# Build ALL configurations
+sweep:
+	$(MAKE) clean lib tests CM3=1
+	$(MAKE) clean lib tests CM4=1
+	$(MAKE) clean lib tests CM0=1
+	$(MAKE) -C SiliconLabs/stk3700 clean lib tests
+	$(MAKE) -C SiliconLabs/stk3200 clean lib tests
+
+
+.PHONY: default lib clean distclean flags tests sweep
 
 # eof

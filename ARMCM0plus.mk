@@ -1,11 +1,15 @@
-CMSIS_DEVICE = $(CMSIS_HOME)/Device/ARM/ARMCM0plus
+CMSIS_device_header = ARMCM0plus.h
 
-VPATH += $(CMSIS_DEVICE)/Source $(CMSIS_DEVICE)/Source/GCC
+DEVICE = $(CMSIS_HOME)/Device/ARM/ARMCM0plus
+
+CPPFLAGS += -I$(DEVICE)/Include -DARMCM0P
+
+VPATH += $(DEVICE)/Source $(DEVICE)/Source/GCC
 
 DEVICE_SRCS = system_ARMCM0plus.c startup_ARMCM0plus.c
 
-CPPFLAGS += -I$(CMSIS_DEVICE)/Include -DARMCM0P
+LDSCRIPT = $(DEVICE)/Source/GCC/gcc_arm.ld
 
-LDSCRIPT = $(CMSIS_DEVICE)/Source/GCC/gcc_arm.ld
+CPPFLAGS += -I$(CMSIS_HOME)/CMSIS/Core/Include
 
 # eof

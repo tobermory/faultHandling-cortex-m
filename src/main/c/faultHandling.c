@@ -49,15 +49,7 @@
   defines: __CORTEX_M3, etc.  But our build process, e.g. make, must
   supply e.g. __CORTEX_M3, __CORTEX_M0PLUS, etc.
 */
-#if defined __CORTEX_M0PLUS
-#include "ARMCM0plus.h"
-#elif defined __CORTEX_M3
-#include "ARMCM3.h"
-#elif defined __CORTEX_M4
-#include "ARMCM4.h"
-#else
-#error "Cortex Platform Not Specified"
-#endif
+
 
 #include "faultHandling.h"
 

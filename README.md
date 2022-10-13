@@ -38,7 +38,7 @@ occurrence.
 The dump can then be *exported* from the microcontroller for fault
 dump analysis.  The code here creates the fault dump. The export step
 is environment-specific, so is added by the application developer, via
-a callback api
+a callback api.
 
 The simplest export might be *printf* (whatever that means on a
 microcontroller!):
@@ -116,7 +116,7 @@ your ARM CMSIS repo clone, e.g:
 CMSIS_HOME = /path/to/my/someDir/CMSIS_5
 ```
 
-With all the prep work, it should now be a case of just:
+With all the prep work done, it should now be a case of just:
 
 ```
 $ make
@@ -214,7 +214,8 @@ memory layout from the user:
 ```
 extern uint32_t __etext;
 extern uint32_t __StackTop;
-   
+
+/* params: text.min, text.max, msp.max, psp.max/0 */
 faultHandlingSetCallStackParameters( 0, &__etext, &__StackTop, 0 );
 ```
 

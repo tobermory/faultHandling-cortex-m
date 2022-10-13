@@ -1,0 +1,120 @@
+<!--
+Copyright © 2022 Stuart Maclean
+
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+
+    * Redistributions in binary form must reproduce the above
+      copyright notice, this list of conditions and the following
+      disclaimer in the documentation and/or other materials provided
+      with the distribution.
+
+    * Neither the name of the copyright holder nor the names of its
+      contributors may be used to endorse or promote products derived
+      from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+HOLDER NOR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS
+OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR
+TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
+DAMAGE.
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+			     http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- 
+  Cortex-M Structured Fault Handling is a C project, NOT a Java
+  project.  This Maven pom is included purely as the vehicle by which
+  we attach a LICENCE to the top of all C source code files. There
+  are no Java artifacts here.
+  -->
+
+  <groupId>tobermory</groupId>
+  <artifactId>CortexM-FaultHandling</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
+
+  <name>Structured Fault Handling for ARM Cortex-M Processors</name>
+  <url>https://github.com/tobermory</url>
+
+  <description>
+  </description>
+
+  <inceptionYear>2022</inceptionYear>
+
+  <organization>
+  </organization>
+
+  <developers>
+    <developer>
+      <id>tobermory</id>
+      <name>Stuart Maclean</name>
+      <email>sdmaclean@gmail.com</email>
+    </developer>
+  </developers>
+  
+  <licenses>
+    <license>
+      <name>BSD 3-Clause</name>
+      <url>http://opensource.org/licenses/BSD-3-Clause</url>
+      <comments>See LICENSE.txt</comments>
+      <distribution>manual</distribution>
+    </license>
+  </licenses>
+
+  <build>
+    <defaultGoal>process-sources</defaultGoal>
+    <plugins>
+      <plugin>
+		<groupId>com.mycila</groupId>
+		<artifactId>license-maven-plugin</artifactId>
+		<version>2.11</version>
+		<configuration>
+		  <header>LICENSE.txt</header>
+		  <quiet>false</quiet>
+		  <strictCheck>true</strictCheck>
+		</configuration>
+		<executions>
+		  <execution>
+			<id>main</id>
+			<phase>process-sources</phase>
+			<goals>
+			  <goal>format</goal>
+			</goals>
+			<configuration>
+			  <includes>
+				<include>src/main/c/*.c</include>
+				<include>src/main/include/*.h</include>
+				<include>src/main/asm/*.S</include>
+				<include>src/test/c/*.c</include>
+				<include>**/Makefile</include>
+				<include>**/*.mk</include>
+			  </includes>
+			  <mapping>
+				<S>SLASHSTAR_STYLE</S>
+				<Makefile>SCRIPT_STYLE</Makefile>
+			  </mapping>
+			</configuration>
+		  </execution>
+		</executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
