@@ -110,6 +110,7 @@ DAMAGE.
 			  <mapping>
 				<S>SLASHSTAR_STYLE</S>
 				<Makefile>SCRIPT_STYLE</Makefile>
+				<mk>SCRIPT_STYLE</mk>
 			  </mapping>
 			</configuration>
 		  </execution>
