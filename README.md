@@ -323,6 +323,9 @@ developer/sdks/gecko_sdk_suite/v2.X/
 and under there you find
 
 ```
+platform/emlib/inc/*.h
+platform/emlib/src/*.c
+
 platform/CMSIS/Include/*.h
 
 // for the stk3700
