@@ -410,7 +410,7 @@ $ cd SiliconLabs/stk3700/
 $ make busFault.run
 ```
 
-will invoke JLinkExe to flash busFault.bin to the stk3700 and run
+will invoke JLinkExe to flash `busFault.bin` to the STK3700 and run
 it. If your serial uart on the STK3700 is hooked up to a host machine,
 you can capture the exported-via-serial fault dump via something as
 simple as `cat`:
