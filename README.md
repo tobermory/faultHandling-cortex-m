@@ -648,7 +648,7 @@ My own guru, a work-in-progress, is [here](src/test/c/faultGuru.c).
 
 ---
 
-For other work of mine, see [here](github.com/tobermory).
+For other work of mine, see [here](https://github.com/tobermory).
 
 sdmaclean AT jeemale
 
