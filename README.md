@@ -150,7 +150,7 @@ file. Your build will have similar.
 
 Exact accuracy for the values is not critical, it will just reduce false
 positive identification of pushed LR values (and thus call stack
-composition).  See the code for more details.
+composition).  See the [code](src/main/c/faultHandling.c) for more details.
 
 ## Building The Library
 
