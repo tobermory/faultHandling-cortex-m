@@ -642,9 +642,9 @@ My own guru, a work-in-progress, is [here](src/test/c/faultGuru.c).
 
 ## Related Work
 
-* [memfault](https://interrupt.memfault.com/blog/cortex-m-fault-debug)
+* Fault analysis by the folks at [memfault](https://interrupt.memfault.com/blog/cortex-m-fault-debug)
 
-* [keil](https://www.keil.com/appnotes/files/apnt209.pdf)
+* Fault exceptions app note by [keil](https://www.keil.com/appnotes/files/apnt209.pdf)
 
 ---
 
