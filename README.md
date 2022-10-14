@@ -306,7 +306,7 @@ just need SiliconLabs' HAL layer, which they call *emlib*.  We also
 want/need their Device files, which replace the ARM ones we built
 against in the previous section.
 
-SiliconLabs's preferred code distribution appears not to be via
+SiliconLabs' preferred code distribution appears not to be via
 GitHub, but via their IDE called SimplicityStudio.  Once that is
 installed, you should find a file system layout akin to:
 
