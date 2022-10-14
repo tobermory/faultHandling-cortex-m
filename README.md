@@ -6,6 +6,8 @@
 
 + Building The Library
 
++ Running Test Applications
+
 + Quiz - Match Faulting Code Against Dump
 
 ## Fault Dumps
