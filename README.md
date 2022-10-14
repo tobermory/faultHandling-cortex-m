@@ -452,7 +452,7 @@ mistakes (i.e. fault):
 + Stack Corruption - [stackSmashing.c](src/test/c/stackSmashing.c)
 
 
-Here are relevant code snippets, i.e. the source of the faults:
+Here are relevant code snippets, i.e. the source of the faults, in no particular order:
 
 ```
 1
