@@ -50,10 +50,28 @@ occurrence.
 The dump above is from a faulting Cortex M3/4. On a Cortex-M0/M0+, the
 hfsr through bfar registers would be missing.
 
-The dump string can then be *exported* from the microcontroller for
-fault dump analysis.  The library described here just creates the
-fault dump. The export step is environment-specific, so is added by
-the application developer, via a callback api.
+A register dump like the one above is routinely created by your
+IDE/debugger when some program you are working with keels over and
+crashes.  But what to do when your application has deployed, and there
+*is* no IDE/debugger? If you need to solve that problem, this library
+could be for you.
+
+Our approach is this:
+
+* Application uses an API to plan for a fault.
+
+* A fault produces a fault dump, as above.
+
+* Application somehow exports the dump.
+
+* Developer gets copy and does analysis.
+
+The code presented here *is* that API.
+
+The dump string is thus exported from the microcontroller for fault
+dump analysis. The library described here just creates the fault dump
+string. The export step is environment-specific, so is added by the
+application developer, via a callback in the API.
 
 The simplest export might be *printf* (whatever that means on a
 microcontroller!):
