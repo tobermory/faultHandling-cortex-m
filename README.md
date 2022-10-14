@@ -310,7 +310,7 @@ GitHub, but via their IDE called SimplicityStudio.  Once that is
 installed, you should find a file system layout akin to:
 
 ```
-/path/to/mySimplicityStudio
+/path/to/my/SimplicityStudio
 ```
 
 under which you find this directory
