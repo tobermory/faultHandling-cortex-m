@@ -551,7 +551,7 @@ s.psr 41000000
 
 D
 
-r7	  2001FFF0
+r7    2001FFF0
 sp    2001FFD0
 excrt FFFFFFF9
 psr   20000003
