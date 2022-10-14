@@ -417,7 +417,7 @@ See [segger.mk](SiliconLabs/segger.mk) for details.
 Can you identify five faulting programs from their fault dumps?
 
 When built via the Makefiles included here and run on my SiliconLabs
-STK3700 starter board, the test applications included here make these
+STK3700 starter board, the test applications make these
 mistakes (i.e. fault):
 
 + Access Violation - [iaccviol.c](src/test/c/iaccviol.c)
