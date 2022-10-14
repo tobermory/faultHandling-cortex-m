@@ -620,7 +620,7 @@ s.psr 40000000
 00000000 00000000
 ```
 
-Which is which ?  Answers on a postcard...
+Which is which?  Answers on a postcard...
 
 ## Fault Guru
 
