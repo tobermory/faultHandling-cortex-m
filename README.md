@@ -391,19 +391,26 @@ $ make busFault.run
 
 will invoke JLinkExe to flash busFault.bin to the stk3700 and run
 it. If your serial uart on the STK3700 is hooked up to a host machine,
-you can see the dump via something as simple as `cat`:
+you can capture the exported-via-serial fault dump via something as
+simple as `cat`:
 
+```
 $ stty -F /dev/ttyUSB0 115200 -echo
 $ cat /dev/ttyUSB0
+
+$ make busFault.run
 ```
 
-Should you ever need to actually debug these test applications, and
-you have Segger's Ozone debugger installed, that too can be invoked
-via make, e.g.
+Should you ever need to actually (single-step) debug these test
+applications, and you have Segger's Ozone debugger installed, that too
+can be invoked via make, e.g.
 
 ```
 $ make busFault.ozone
 ```
+
+See [segger.mk](SiliconLabs/segger.mk) for details.
+
 
 ## Quiz - Match Faulting Code Against Dump
 
