@@ -612,8 +612,11 @@ Something along the lines of
 ```
 $ faultGuru myFaultDumpString.txt
 
-Your program crashed!
+1: RTOS present - fault used Process stack
+2: Escalated fault - HFSR[30] set
+3: etc etc
 ```
 
-but hopefully a bit more specific than that!
+My own guru, a work-in-progress, is [here](src/test/c/faultGuru.c).
+
 
