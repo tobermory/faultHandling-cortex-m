@@ -420,15 +420,16 @@ When built via the Makefiles included here and run on my SiliconLabs
 STK3700 starter board, the test applications included here make these
 mistakes (i.e. fault):
 
-+ Access Violation
++ Access Violation - [iaccvol.c](src/test/c/iaccvol.c)
 
-+ Invalid State
++ Invalid State - [invstate.c](src/test/c/invstate.c)
 
-+ MPU Violation
++ MPU Violation - [mpuFault.c](src/test/c/mpuFault.c)
 
-+ Bus Fault
++ Bus Fault - [busFault.c](src/test/c/busFault.c)
 
-+ Stack Corruption (Smashing)
++ Stack Corruption [stackSmashing.c](src/test/c/stackSmashing.c)
+
 
 Here are relevant code snippets, i.e. the source of the faults:
 
