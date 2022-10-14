@@ -420,7 +420,7 @@ When built via the Makefiles included here and run on my SiliconLabs
 STK3700 starter board, the test applications included here make these
 mistakes (i.e. fault):
 
-+ Access Violation - [iaccvol.c](src/test/c/iaccvol.c)
++ Access Violation - [iaccviol.c](src/test/c/iaccviol.c)
 
 + Invalid State - [invstate.c](src/test/c/invstate.c)
 
