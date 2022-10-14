@@ -632,11 +632,24 @@ Something along the lines of
 ```
 $ faultGuru myFaultDumpString.txt
 
-1: RTOS present - fault used Process stack
-2: Escalated fault - HFSR[30] set
-3: etc etc
+1: lr[3] = 1   :  Fault occurred in Thread Mode
+2: lr[2] = 1   :  Fault occurred on Process Stack - RTOS likely present
+3: hfsr[30] = 1 : Fault escalated from Usage/Bus/MemManage
+4: etc etc
 ```
 
 My own guru, a work-in-progress, is [here](src/test/c/faultGuru.c).
+
+## Related Work
+
+* [memfault](https://interrupt.memfault.com/blog/cortex-m-fault-debug)
+
+* [keil](https://www.keil.com/appnotes/files/apnt209.pdf)
+
+---
+
+For other work of mine, see [here](github.com/tobermory).
+
+sdmaclean AT jeemale
 
 
