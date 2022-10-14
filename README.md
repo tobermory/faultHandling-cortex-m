@@ -634,7 +634,7 @@ $ faultGuru myFaultDumpString.txt
 
 1: lr[3] = 1    :  Fault occurred in Thread Mode
 2: lr[2] = 1    :  Fault occurred on Process Stack - RTOS likely present
-3: hfsr[30] = 1 : Fault escalated from Usage/Bus/MemManage
+3: hfsr[30] = 1 :  Fault escalated from Usage/Bus/MemManage
 4: etc etc
 ```
 
