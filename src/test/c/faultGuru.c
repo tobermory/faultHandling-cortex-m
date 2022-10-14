@@ -2,7 +2,7 @@
 
 int main(void) {
 
-  printf( "Your program crashed, how disappointing.\n" );
+  printf( "Your program crashed, oh how disappointing.\n" );
 
   return 0;
 }
