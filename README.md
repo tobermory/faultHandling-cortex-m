@@ -202,8 +202,7 @@ for our purposes. Other releases are untested. So, you could checkout
 a particular commit, via e.g.
 
 ```
-$ git checkout 5.8.0
-$ git checkout 5.9.0
+$ git checkout 5.8.0 ; git checkout 5.9.0
 ```
 
 or just skip this step and go with the HEAD of master/main.
