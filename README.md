@@ -428,7 +428,7 @@ mistakes (i.e. fault):
 
 + Bus Fault - [busFault.c](src/test/c/busFault.c)
 
-+ Stack Corruption [stackSmashing.c](src/test/c/stackSmashing.c)
++ Stack Corruption - [stackSmashing.c](src/test/c/stackSmashing.c)
 
 
 Here are relevant code snippets, i.e. the source of the faults:
