@@ -144,7 +144,9 @@ Makefile. I normally work on Linux, so my setup would be
 ```
 $ sudo apt install gcc-arm-none-eabi make
 ```
-Adapt to your build system as needed. 
+
+The code here is being built by make. Adapt to your build
+system as needed.
 
 ### For Generic ARM Processors
 
