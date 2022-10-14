@@ -281,7 +281,7 @@ library:
 
 These boards have real peripherals, so we can truly export our fault
 dumps to e.g. a serial console. To make use of such peripherals, we
-just need SiliconLabs's HAL layer, which they call *emlib*.  We also
+just need SiliconLabs' HAL layer, which they call *emlib*.  We also
 want/need their Device files, which replace the ARM ones we built
 against in the previous section.
 
