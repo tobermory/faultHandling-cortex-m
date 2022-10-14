@@ -271,9 +271,12 @@ $ make CM0=1 tests
 
 ### For Vendor-Specific Micro-controllers
 
-I work with Cortex M micro-controllers from Silicon Labs. I have two
-of their starter kits upon which I can test this fault handling
-library:
+I work with Cortex M micro-controllers from Silicon Labs, and below
+detail how to test this faultHandling api on those controllers.  Adapt
+as necessary for other vendors, e.g. STM32, etc.
+
+I have two SiliconLabs starter kits upon which I can test this fault
+handling library:
 
 + The [EFM32GG-STK3700](https://www.silabs.com/development-tools/mcu/32-bit/efm32gg-starter-kit), which has a Cortex M3 Giant Gecko, with 1MB flash and 128kb RAM.
 
@@ -296,23 +299,23 @@ installed, you should find a file system layout akin to:
 under which you find this directory
 
 ```
-developer/sdks/gecko_sdk_suite/v2.X/platform
+developer/sdks/gecko_sdk_suite/v2.X/
 ```
 
 and under there you find
 
 ```
-CMSIS/Include/*.h
+platform/CMSIS/Include/*.h
 
 // for the stk3700
-Device/SiliconLabs/EFM32GG/Include/*.h
-Device/SiliconLabs/EFM32GG/Source/*.c
-Device/SiliconLabs/EFM32GG/Source/GCC/*.c, *.ld
+platform/Device/SiliconLabs/EFM32GG/Include/*.h
+platform/Device/SiliconLabs/EFM32GG/Source/*.c
+platform/Device/SiliconLabs/EFM32GG/Source/GCC/*.c, *.ld
 
 // for the stk3200
-Device/SiliconLabs/EFM32ZG/Include/*.h
-Device/SiliconLabs/EFM32ZG/Source/*.c
-Device/SiliconLabs/EFM32ZG/Source/GCC/*.c, *.ld
+platform/Device/SiliconLabs/EFM32ZG/Include/*.h
+platform/Device/SiliconLabs/EFM32ZG/Source/*.c
+platform/Device/SiliconLabs/EFM32ZG/Source/GCC/*.c, *.ld
 ```
 
 With such a file layout, we can build our fault handling library AND
