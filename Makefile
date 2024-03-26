@@ -103,6 +103,7 @@ AXFS = $(addsuffix .axf, $(TESTS))
 
 BINS = $(addsuffix .bin, $(TESTS))
 
+
 #################### Build Settings: VPATH, CPPFLAGS ##############
 
 # run 'make flags' to inspect these
@@ -189,7 +190,6 @@ sweep:
 	$(MAKE) clean lib tests CM0=1
 	$(MAKE) -C SiliconLabs/stk3700 clean lib tests
 	$(MAKE) -C SiliconLabs/stk3200 clean lib tests
-
 
 .PHONY: default lib clean distclean flags tests sweep
 
