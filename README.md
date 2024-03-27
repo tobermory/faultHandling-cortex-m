@@ -82,7 +82,7 @@ void printfDumpProcessor(void) {
 }
 ```
 
-I work in [oceanographic instrumentation](https://www.mrvsys.com),
+I work in oceanographic instrumentation,
 including underwater profiling floats. If my system faults, 2000m down
 somewhere in the Pacific Ocean, there ain't anyone there watching, so
 console printf is of limited utility. And the JTAG cable doesn't quite
