@@ -219,6 +219,7 @@ Next, edit the Makefile, setting the CMSIS_HOME variable to point to
 your ARM CMSIS_5 repo clone, e.g:
 
 ```
+$ cd faultHandling-cortex-m
 $ ed Makefile
 
 CMSIS_HOME = /path/to/my/someDir/CMSIS_5
