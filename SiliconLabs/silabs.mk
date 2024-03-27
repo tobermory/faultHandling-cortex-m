@@ -33,6 +33,7 @@
 # DAMAGE.
 #
 
+# Replace this with where you cloned the SiliconLabs gecko_sdk repo to...
 GECKO_SDK ?= $(HOME)/projects/github-tobermory/gecko_sdk
 
 VENDOR = SiliconLabs
