@@ -493,12 +493,11 @@ p();
 
 5
 
-MPU_RegionInit_TypeDef mpuInit = MPU_INIT_FLASH_DEFAULT;
-mpuInit.size = mpuRegionSize32b;
-mpuInit.accessPermission = mpuRegionNoAccess;
-MPU_ConfigureRegion(&mpuInit);
-MPU_Enable(MPU_CTRL_PRIVDEFENA);
-
+uint32_t rbar = ...
+uint32_t rsar = ...
+ARM_MPU_SetRegion( rbar, rsar );
+ARM_MPU_Enable( MPU_CTRL_PRIVDEFENA_Msk );
+...
 int* p = (int*)NULL;
 int i = *p;
 ```
