@@ -188,10 +188,11 @@ CMSIS_5/Device/ARM/ARMCM3/Source/GCC/*.S, *.ld
 ```
 
 Assuming that the source tree above is not already on your development
-system, grab it from GitHub:
+system, grab it from ARM-software's GitHub repo, into some local
+directory C:
 
 ```
-$ cd someDir
+$ cd C
 $ git clone https://github.com/ARM-software/CMSIS_5.git
 
 ```
@@ -207,21 +208,21 @@ $ git checkout 5.8.0 ; git checkout 5.9.0
 or just skip this step and go with the HEAD of master/main.
 
 Next, clone the fault-handler repo (the one whose README you are now
-reading), if not done so already:
+reading), if not done so already, into some local location F:
 
 ```
-$ cd someOtherDir
+$ cd F
 $ git clone https://github.com/tobermory/faultHandling-cortex-m.git
 ```
 
 Next, edit the Makefile, setting the CMSIS_HOME variable to point to
-your ARM CMSIS_5 repo clone, e.g:
+your ARM-software CMSIS_5 repo clone, e.g:
 
 ```
 $ cd faultHandling-cortex-m
 $ ed Makefile
 
-CMSIS_HOME = /path/to/my/someDir/CMSIS_5
+CMSIS_HOME = /path/to/C/CMSIS_5
 ```
 
 With all the prep work done, it should now be a case of just:
@@ -249,8 +250,7 @@ libfaultHandling_CM3.a
 ```
 
 
-By default, the build output is terse (uncluttered!).  To see a bit
-more:
+By default, the build output is terse (uncluttered!). To see a bit more:
 
 ```
 $ make clean
@@ -289,7 +289,7 @@ $ make CM0=1 tests
 ### For Vendor-Specific Micro-controllers
 
 I work with Cortex M micro-controllers from Silicon Labs, and below
-detail how to test this faultHandling api on those controllers.  Adapt
+detail how to test this faultHandling api on those controllers. Adapt
 as necessary for other vendors, e.g. STM32, etc.
 
 I have two SiliconLabs starter kits upon which I can test this fault
@@ -306,7 +306,7 @@ just need SiliconLabs' hardware access layer (HAL), which they call
 ones we built against in the previous section.
 
 SiliconLabs bundle their HAL layer (emlib), plus Device headers and
-CMSIS headers in a GitHub repository called `gecko_sdk`. Decide on
+CMSIS headers, in a GitHub repository called `gecko_sdk`. Decide on
 some local directory in which to clone it, we'll call it G:
 
 ```
@@ -356,7 +356,7 @@ Switch back to the clone of THIS repository, and proceed thus:
 $ cd SiliconLabs
 
 $ ed silabs.mk
-GECKO_SDK=/path/to/G/gecko_sdk
+GECKO_SDK = /path/to/G/gecko_sdk
 ```
 i.e. the `GECKO_SDK` makefile variable matches the location of your
 SiliconLabs gecko_sdk clone.
