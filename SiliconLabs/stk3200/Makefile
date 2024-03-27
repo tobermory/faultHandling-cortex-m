@@ -53,6 +53,6 @@ include $(BASEDIR)/Makefile
 
 include $(BASEDIR)/SiliconLabs/segger.mk
 
-$(AXFS) : stk3200.o em_cmu.o em_gpio.o em_system.o em_usart.o
+$(AXFS) : stk3200.o em_core.o em_cmu.o em_gpio.o em_system.o em_usart.o
 
 # eof

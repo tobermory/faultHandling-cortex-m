@@ -33,11 +33,11 @@
 # DAMAGE.
 #
 
-# GECKO_SDK_SUITE defined in ./silabs.mk
+# GECKO_SDK defined in ./silabs.mk
 
 CMSIS_device_header = em_device.h
 
-DEVICE = $(GECKO_SDK_SUITE)/platform/Device/SiliconLabs/EFM32GG
+DEVICE = $(GECKO_SDK)/platform/Device/SiliconLabs/EFM32GG
 
 CPPFLAGS += -I$(DEVICE)/Include
 
@@ -47,6 +47,6 @@ DEVICE_SRCS = system_efm32gg.c startup_efm32gg.c
 
 LDSCRIPT = $(DEVICE)/Source/GCC/efm32gg.ld
 
-CPPFLAGS += -I$(GECKO_SDK_SUITE)/platform/CMSIS/Include
+CPPFLAGS += -I$(GECKO_SDK)/platform/CMSIS/Core/Include
 
 # eof

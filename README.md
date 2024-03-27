@@ -301,59 +301,65 @@ handling library:
 
 These boards have real peripherals, so we can truly export our fault
 dumps to e.g. a serial console. To make use of such peripherals, we
-just need SiliconLabs' HAL layer, which they call *emlib*.  We also
-want/need their Device files, which replace the ARM ones we built
-against in the previous section.
+just need SiliconLabs' hardware access layer (HAL), which they call
+*emlib*.  We also want/need their Device files, which replace the ARM
+ones we built against in the previous section.
 
-SiliconLabs' preferred code distribution appears not to be via
-GitHub, but via their IDE called SimplicityStudio.  Once that is
-installed, you should find a file system layout akin to:
-
-```
-/path/to/my/SimplicityStudio
-```
-
-under which you find this directory
+SiliconLabs bundle their HAL layer (emlib), plus Device headers and
+CMSIS headers in a GitHub repository called `gecko_sdk`. Decide on
+some local directory in which to clone it, we'll call it G:
 
 ```
-developer/sdks/gecko_sdk_suite/v2.X/
+$ cd G
+$ git clone https://github.com/SiliconLabs/gecko_sdk
+$ cd gecko_sdk
 ```
 
-and under there you find
+At time of writing (Mar 2024), the latest tag is v4.4.1. We have used
+that tag to build against, so
 
 ```
+$ git checkout v4.4.1
+```
+
+The relevant gecko_sdk files we use here are
+
+```
+// for emlib
 platform/emlib/inc/*.h
 platform/emlib/src/*.c
+platform/common/inc/*.h
 
-platform/CMSIS/Include/*.h
-
-// for the stk3700
+// for the stk3700 (efm32gg)
 platform/Device/SiliconLabs/EFM32GG/Include/*.h
 platform/Device/SiliconLabs/EFM32GG/Source/*.c
-platform/Device/SiliconLabs/EFM32GG/Source/GCC/*.c, *.ld
+platform/Device/SiliconLabs/EFM32GG/Source/GCC/*.c, efm32gg.ld
 
-// for the stk3200
+// for the stk3200 (efm32zg)
 platform/Device/SiliconLabs/EFM32ZG/Include/*.h
 platform/Device/SiliconLabs/EFM32ZG/Source/*.c
-platform/Device/SiliconLabs/EFM32ZG/Source/GCC/*.c, *.ld
+platform/Device/SiliconLabs/EFM32ZG/Source/GCC/*.c, efm32zg.ld
+
+// for the CMSIS Core
+platform/CMSIS/Core/Include/*.h
 ```
 
 With such a file layout, we can build our fault handling library AND
 some test cases that would run on those boards and produce real fault
 dumps exported via a serial console.
 
-
-Proceed thus:
+Switch back to the clone of THIS repository, and proceed thus:
 
 ```
 $ cd SiliconLabs
 
 $ ed silabs.mk
-GECKO_SDK_SUITE=/path/to/my/SimplicityStudio/developer/sdks/gecko_sdk_suite/v2.X
+GECKO_SDK=/path/to/G/gecko_sdk
 ```
+i.e. the `GECKO_SDK` makefile variable matches the location of your
+SiliconLabs gecko_sdk clone.
 
-i.e. the `GECKO_SDK_SUITE` variable matches your SimplicityStudio
-install path.  Then, to build the library and some test applications
+Then, to build the library and some test applications
 for the STK3700 starter board, so we can turn this:
 
 ```
@@ -399,9 +405,9 @@ uart peripheral on each board (via the Expansion Header) to export our
 fault dumps to a host machine via serial/usb.
 
 The STK3700 and STK3200 boards have a Segger JLink debugger interface
-built in. So, you just need Segger's JLinkExe (Linux) program to flash
-these binaries to the boards and run them. Our Makefiles provide
-targets to do this, e.g:
+built in. So, you just need Segger's 'JLink Commander' tool (called
+JLinkExe on Linux) to flash these binaries to the boards and
+run them. Our Makefiles provide targets to do this, e.g:
 
 ```
 $ cd SiliconLabs/stk3700/

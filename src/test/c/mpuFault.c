@@ -39,8 +39,9 @@
 #include "em_chip.h"
 #include "em_cmu.h"
 #include "em_gpio.h"
-#include "em_mpu.h"
 #include "em_usart.h"
+
+#include "mpu_armv7.h"
 
 /**
  * @author Stuart Maclean
@@ -98,12 +99,16 @@ int main(void) {
 
 
   /* The set up: Define a no-access region to bottom 32 bytes of flash... */
-  MPU_RegionInit_TypeDef mpuInit = MPU_INIT_FLASH_DEFAULT;
-  mpuInit.size = mpuRegionSize32b;
-  mpuInit.accessPermission = mpuRegionNoAccess;
-  MPU_ConfigureRegion(&mpuInit);
-  MPU_Enable(MPU_CTRL_PRIVDEFENA);
+  uint32_t rbar = ARM_MPU_RBAR( 0, FLASH_MEM_BASE );
 
+  // Mimics attributes of (older) em_mpu.h's MPU_INIT_FLASH_DEFAULT
+  uint32_t accessAttributes = ARM_MPU_ACCESS_(0,0,1,0);
+
+  uint32_t rsar = ARM_MPU_RASR_EX( 0, ARM_MPU_AP_NONE, accessAttributes,
+								   0, ARM_MPU_REGION_SIZE_32B );
+  ARM_MPU_SetRegion( rbar, rsar );
+  ARM_MPU_Enable( MPU_CTRL_PRIVDEFENA_Msk );
+  
   // ... and the failure: a 'null pointer' attempts to read from that region
   int* p = (int*)NULL;
   int i = *p;

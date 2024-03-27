@@ -37,7 +37,7 @@
 
 CMSIS_device_header = em_device.h
 
-DEVICE = $(GECKO_SDK_SUITE)/platform/Device/SiliconLabs/EFM32ZG
+DEVICE = $(GECKO_SDK)/platform/Device/SiliconLabs/EFM32ZG
 
 CPPFLAGS += -I$(DEVICE)/Include
 
@@ -47,7 +47,7 @@ DEVICE_SRCS = system_efm32zg.c startup_efm32zg.c
 
 LDSCRIPT = $(DEVICE)/Source/GCC/efm32zg.ld
 
-CPPFLAGS += -I$(GECKO_SDK_SUITE)/platform/CMSIS/Include
+CPPFLAGS += -I$(GECKO_SDK)/platform/CMSIS/Core/Include
 
 # eof
 

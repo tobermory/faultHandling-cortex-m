@@ -49,9 +49,9 @@ include $(BASEDIR)/Makefile
 
 include $(BASEDIR)/SiliconLabs/segger.mk
 
-$(AXFS) : stk3700.o em_cmu.o em_gpio.o em_system.o em_usart.o
+$(AXFS) : stk3700.o em_core.o em_cmu.o em_gpio.o em_system.o em_usart.o
 
-mpuFault.axf: em_mpu.o
+#mpuFault.axf: em_mpu.o
 
 # eof
 

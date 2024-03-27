@@ -33,13 +33,15 @@
 # DAMAGE.
 #
 
-GECKO_SDK_SUITE ?= $(HOME)/Downloads/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6
+GECKO_SDK ?= $(HOME)/projects/github-tobermory/gecko_sdk
 
 VENDOR = SiliconLabs
 
-EMLIB = $(GECKO_SDK_SUITE)/platform/emlib
+EMLIB = $(GECKO_SDK)/platform/emlib
 
-CPPFLAGS += -I$(EMLIB)/inc
+COMMON = $(GECKO_SDK)/platform/common
+
+CPPFLAGS += -I$(EMLIB)/inc -I$(COMMON)/inc
 
 VPATH += $(EMLIB)/src
 

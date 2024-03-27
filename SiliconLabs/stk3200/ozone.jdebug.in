@@ -14,7 +14,7 @@ void OnProjectLoad (void) {
   //
   Project.SetDevice ("DEVICE");
   Project.SetHostIF ("USB", "");
-  Project.SetTargetIF ("JTAG");
+  Project.SetTargetIF ("SWD");
   Project.SetTIFSpeed ("1 MHz");
   Project.AddSvdFile ("$(ConfigDir)/CPU/Cortex-M3.svd");
   Project.AddSvdFile ("$(ConfigDir)/Peripherals/DEVICE.svd");
