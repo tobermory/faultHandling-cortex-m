@@ -493,8 +493,9 @@ p();
 
 5
 
-uint32_t rbar = ...
-uint32_t rsar = ...
+uint32_t rbar = ARM_MPU_RBAR( 0, 0 );
+uint32_t rsar = ARM_MPU_RASR_EX( 0, ARM_MPU_AP_NONE, ARM_MPU_ACCESS_(0,0,1,0),
+								 0, ARM_MPU_REGION_SIZE_32B );
 ARM_MPU_SetRegion( rbar, rsar );
 ARM_MPU_Enable( MPU_CTRL_PRIVDEFENA_Msk );
 ...
