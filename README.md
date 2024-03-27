@@ -322,6 +322,8 @@ that tag to build against, so
 $ git checkout v4.4.1
 ```
 
+or just use the HEAD of the gsdk_4.4 branch.
+
 The relevant gecko_sdk files we use here are
 
 ```
