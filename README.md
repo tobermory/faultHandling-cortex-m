@@ -127,7 +127,6 @@ __attribute__((naked))
 void HardFault_Handler(void) {
   __asm__( "B FaultHandler\n" );
 }
-
 ```
 
 In additional to the core CPU register values, the fault dump can
