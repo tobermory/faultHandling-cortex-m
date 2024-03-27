@@ -83,7 +83,7 @@ void printfDumpProcessor(void) {
 ```
 
 I work in oceanographic instrumentation,
-including underwater [profiling floats](https://en.wikipedia.org/wiki/Float_(oceanography). If my system faults, 2000m down
+including underwater [profiling floats](https://en.wikipedia.org/wiki/Float_(oceanography)). If my system faults, 2000m down
 somewhere in the Pacific Ocean, there ain't anyone there watching, so
 console printf is of limited utility. And the JTAG cable doesn't quite
 reach. And the wi-fi is spotty. And I have no hard disk.
