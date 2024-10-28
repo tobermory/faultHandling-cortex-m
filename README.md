@@ -150,7 +150,7 @@ extern uint32_t __etext;
 extern uint32_t __StackTop;
 
 /* params: text.min, text.max, msp.max, psp.max/0 */
-faultHandlingSetCallStackParameters( __Vectors, &__etext, &__StackTop, 0 );
+faultHandlingSetCallStackParameters( &__Vectors, &__etext, &__StackTop, 0 );
 ```
 
 You just supply lower and upper bounds for the .text section, and
