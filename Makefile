@@ -157,6 +157,11 @@ clean:
 	@echo AS $(<F)
 	$(ECHO)$(AS) $(CPU_OPTIONS) $(ASFLAGS) $< $(OUTPUT_OPTION)
 
+# Run preprocessor ONLY. Useful to see what macros/defines resolve to
+%.i : %.c
+	@echo CPP $(<F)
+	$(ECHO)$(CC) -E $(CPPFLAGS) $< > $@ || $(RM) $@
+
 %.bin: %.axf 
 	@echo OBJCOPY $(<F) = $(@F)
 	$(ECHO)$(OBJCOPY) -O binary $< $@
