@@ -145,15 +145,17 @@ sequence led to the fault.  To do this, the library needs some help on
 memory layout from the user:
 
 ```
+extern const tVectorEntry __Vectors[];
 extern uint32_t __etext;
 extern uint32_t __StackTop;
 
 /* params: text.min, text.max, msp.max, psp.max/0 */
-faultHandlingSetCallStackParameters( 0, &__etext, &__StackTop, 0 );
+faultHandlingSetCallStackParameters( __Vectors, &__etext, &__StackTop, 0 );
 ```
 
 You just supply lower and upper bounds for the .text section, and
-upper bounds for Main Stack and Process Stack (latter optional). I get
+upper bounds for Main Stack and Process Stack (latter optional).  The
+vector table `__Vectors` will be declared in `startup_device.c. I get
 `__etext` and `__StackTop` declared by my linker, via the .ld
 file. Your build will have similar.
 
