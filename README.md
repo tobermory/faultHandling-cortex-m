@@ -40,6 +40,11 @@ s.r12 01010101
 s.lr  0001D053
 s.pc  0003B9CC
 s.psr 21000000
+2001FFD8 00002001
+2001FFE4 00001801
+2001FFE8 00000101
+2001FFFC 0000016B
+
 ```
 
 The fault dump is just a multi-line string. It is prepared at program
@@ -49,6 +54,11 @@ occurrence.
 
 The dump above is from a faulting Cortex M3/4. On a Cortex-M0/M0+, the
 hfsr through bfar registers would be missing.
+
+The dump includes 17 register values followed by four 'possible pushed
+LR' values. Each is a pair: stack location where the possible LR was
+found, and the value itself. From this sequence the call stack leading
+the fault might be identified.
 
 A register dump like the one above is routinely created by your
 IDE/debugger when some program you are working with keels over and
