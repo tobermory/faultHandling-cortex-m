@@ -100,7 +100,7 @@ reach. And the wi-fi is spotty. And I have no hard disk.
 
 My export strategy therefore is to declare the faultDump buffer in a
 .noInit section of RAM, re-boot after the fault, wait until I am back
-at the surface, then beam the fault dump home via Iridium sat comms.
+at the surface, then beam the fault dump home via [Iridium sat comms](https://en.wikipedia.org/wiki/Iridium_satellite_constellation).
 Only then can the fault analysis begin, and in my (painful)
 experience, each and every register in the dump can contribute to
 solving the error cause.
