@@ -276,13 +276,14 @@ We include a make target that just prints important variables
 $ make flags
 ```
 
-There are a few simple demo applications:
+A simple test case [noopProcessor.c](src/test/c/noopProcessor.c) is
+provided for a generic ARM Cortex-M processor. To build it:
 
 ```
 $ make tests
 ```
 
-Each demo/test produces four files: .axf, .bin, .map, .lst.
+should produce `noopProcessor.axf, noopProcessor.bin, noopProcessor.map, noopProcessor.lst`.
 
 ### Other Cortex M Variants
 
