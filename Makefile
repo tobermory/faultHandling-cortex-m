@@ -180,9 +180,9 @@ $(AXFS) : %.axf : %.o $(LIB) $(DEVICE_OBJS)
 # Inspect VPATH, CPPFLAGS, useful when things won't build
 flags:
 	@echo
-	@echo VPATH    $(VPATH)
+	@echo VPATH    $(VPATH) | tr ' ' '\n'
 	@echo
-	@echo CPPFLAGS $(CPPFLAGS)
+	@echo CPPFLAGS $(CPPFLAGS) | tr ' ' '\n'
 	@echo
 	@echo LIB $(LIB)
 	@echo

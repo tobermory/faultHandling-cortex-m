@@ -391,6 +391,7 @@ we do this:
 
 ```
 $ cd stk3700
+$ make flags
 $ make lib tests
 $ ls *.bin
 busFault.bin  iaccviol.bin  invstate.bin  mpuFault.bin  stackSmashing.bin
